@@ -70,8 +70,6 @@ export default function AddNewContact (props){
         dispatch({ type:"clearInfo", payload:""})
     }
 
-    console.log(counter+ " yo soy counter")
-
     return(
         <div>
             <div className="d-flex justify-content-center align-items-center">

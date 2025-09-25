@@ -17,7 +17,7 @@ export default function Agenda() {
     }
 
     const [user, setUser] = useState(conditionalUser)
-    console.log(user + " <-- user en agenda")
+    console.log("Bienvenido a tu super agenda")
     const [contactList, setContactList] = useState([]);
     const [update, setUpdate] = useState();
     const url = `/addnewcontact`
@@ -28,6 +28,7 @@ export default function Agenda() {
     const updateContactList = async () => {
         await updateUser();
         //me trae la lista
+        console.log("actualizando lista de contactos")
         const list = await getContacts(user);
         setContactList(list);
     }
@@ -35,7 +36,7 @@ export default function Agenda() {
     const updateUser = async () => {
         const list = await getAgendas();
         let existe = "false"
-        console.log(user + " <-- user en updateUser")
+        console.log(user + " <-- user en agenda")
         for (let t = 0; t < list.length; t++) {
             if (list[t].slug === user) {
                 existe = "true"

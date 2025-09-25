@@ -35,7 +35,7 @@ export default function Agenda() {
     const updateUser = async () => {
         const list = await getAgendas();
         let existe = "false"
-        console.log(user + "console.log del user")
+        console.log(user + " <-- user en updateUser")
         for (let t = 0; t < list.length; t++) {
             if (list[t].slug === user) {
                 existe = "true"

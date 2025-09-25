@@ -50,7 +50,6 @@ export default function Agenda() {
     useEffect(() => {
         if (user !== undefined) {
             updateContactList();
-            console.log("updateContactList")
         }
     }, [user, update])
 

@@ -17,7 +17,7 @@ export default function Agenda() {
     }
 
     const [user, setUser] = useState(conditionalUser)
-    console.log(user + " __ y yo soy user")
+    console.log(user + " <-- user en agenda")
     const [contactList, setContactList] = useState([]);
     const [update, setUpdate] = useState();
     const url = `/addnewcontact`
@@ -106,8 +106,8 @@ export default function Agenda() {
 
     return (
         <div>
-            <button className="btn btn-success float-start m-2" onClick={handleChangeUser}>Change user</button>
-            <Link to={url} className="btn btn-primary float-end m-2">Add new contact</Link>
+            <button className="btn btn-success float-start m-2" onClick={handleChangeUser}>Cambiar usuario</button>
+            <Link to={url} className="btn btn-primary float-end m-2">Añadir nuevo usuario</Link>
             <div className="d-flex flex-column justify-conten-center align-items-center col-sm-12">
                 {inicio()}
                 {contact.user[0] === undefined ? <p></p> :

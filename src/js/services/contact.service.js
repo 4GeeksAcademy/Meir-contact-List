@@ -1,73 +1,88 @@
 const api = `https://playground.4geeks.com/contact/agendas/`;
 
-export const getContacts = async (user)=>{
-    try{
+export const getContacts = async (user) => {
+    try {
         const userContacts = await fetch(`${api}${user}/contacts`);
+        
+        // Verifica si la respuesta no es exitosa
+        if (!userContacts.ok) {
+            throw new Error(`Error al recibir los contactos: ${userContacts.status} ${userContacts.statusText}`);
+        }
+        
         const contacts = await userContacts.json();
         return contacts.contacts;
+    } catch (err) {
+        console.error(`Error al recibir los contactos: ${err}`);
     }
-    catch (err){
-        console.error(`La has cagado, aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa${err}`);
-    }
-}
+};
 
-export const addContact = async (user, info)=>{
-    console.log(info)
-    try{
-        const data =  fetch(`${api}${user}/contacts`,{
+export const addContact = async (user, info) => {
+    console.log(info);
+    try {
+        const data = fetch(`${api}${user}/contacts`, {
             method: "POST",
-            body : JSON.stringify(info),
-            headers : {
-                "Content-Type" : "application/json"
+            body: JSON.stringify(info),
+            headers: {
+                "Content-Type": "application/json"
             }
         })
-        .then(resp =>{
-            console.log(resp.ok); //llego bn la info
-            console.log(resp.status); //c'odigo de recibimiento, debe ser menor a 400
-            return resp.json(); //me devuelve el array
+        .then(resp => {
+            // Verifica si la respuesta no es exitosa
+            if (!resp.ok) {
+                throw new Error(`Error al añadir el contacto: ${resp.status} ${resp.statusText}`);
+            }
+            
+            console.log(resp.ok);
+            console.log(resp.status);
+            return resp.json();
         })
-        .then(data=>{
-            //no se bn pa q sirve esto
-            console.log(data); //imprime en la consola el objeto exacto recibido por el servidor
-        })
+        .then(data => {
+            console.log(data);
+        });
+    } catch (err) {
+        console.error(`Error al añadir el contacto: ${err}`);
     }
-    catch (err){
-        console.error(`la cagaste ${err}`)
-    }
-}
+};
 
-export const editContact = async (user, id, info)=>{
-    console.log(info)
-    try{
-        const data =  fetch(`${api}${user}/contacts/${id}`,{
+export const editContact = async (user, id, info) => {
+    console.log(info);
+    try {
+        const data = fetch(`${api}${user}/contacts/${id}`, {
             method: "PUT",
-            body : JSON.stringify(info),
-            headers : {
-                "Content-Type" : "application/json"
+            body: JSON.stringify(info),
+            headers: {
+                "Content-Type": "application/json"
             }
         })
-        .then(resp =>{
-            console.log(resp.ok); //llego bn la info
-            console.log(resp.status); //c'odigo de recibimiento, debe ser menor a 400
-            return resp.json(); //me devuelve el array
+        .then(resp => {
+            // Verifica si la respuesta no es exitosa
+            if (!resp.ok) {
+                throw new Error(`Error al editar el contacto: ${resp.status} ${resp.statusText}`);
+            }
+            
+            console.log(resp.ok);
+            console.log(resp.status);
+            return resp.json();
         })
-        .then(data=>{
-            //no se bn pa q sirve esto
-            console.log(data); //imprime en la consola el objeto exacto recibido por el servidor
-        })
+        .then(data => {
+            console.log(data);
+        });
+    } catch (err) {
+        console.error(`Error al editar el contacto: ${err}`);
     }
-    catch (err){
-        console.error(`la cagaste ${err}`)
-    }
-}
+};
 
-export const deleteContact = async (user,id)=>{
-    try{
+export const deleteContact = async (user, id) => {
+    try {
         const tasks = await fetch(`${api}${user}/contacts/${id}`, {
-            method : "DELETE"
-        })
+            method: "DELETE"
+        });
+        
+        // Verifica si la respuesta no es exitosa
+        if (!tasks.ok) {
+            throw new Error(`Error al eliminar el contacto: ${tasks.status} ${tasks.statusText}`);
+        }
+    } catch (err) {
+        console.error(`Error al eliminar el contacto: ${err}`);
     }
-    catch(err){
-        console.error(`La cagaste, ${err}`)
-    }
-}
+};

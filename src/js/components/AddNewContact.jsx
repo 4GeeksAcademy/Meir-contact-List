@@ -77,16 +77,16 @@ export default function AddNewContact (props){
             <div className="d-flex justify-content-center align-items-center">
                 <div className="card col-sm-8 mt-5 p-4">
                     <h1 className="my-3 text-center">{user}</h1>
-                    <label className="mt-1">Full Name</label>
+                    <label className="mt-1">Nombre Completo</label>
                     <input className="col-sm-12 my-2" id="name"  placeholder="Full Name" onKeyDown={handleKeyDown} onChange={(e)=>setName(e.target.value)} value={name}/>
                     <label className="mt-1">Email</label>
                     <input className="col-sm-12 my-2" id="email" placeholder="Enter email" onKeyDown={handleKeyDown} onChange={(e)=>setEmail(e.target.value)} value={email}/>
-                    <label className="mt-1">Phone</label>
+                    <label className="mt-1">Telefono</label>
                     <input className="col-sm-12 my-2" id="phone" placeholder="Enter phone" onKeyDown={handleKeyDown} onChange={(e)=>setPhone(e.target.value)} value={phone}/>
-                    <label className="mt-1">Address</label>
+                    <label className="mt-1">Direccion</label>
                     <input className="col-sm-12 my-2" id="address" placeholder="Enter address" onKeyDown={handleKeyDown} onChange={(e)=>setAddress(e.target.value)} value={address}/>
-                    <Link to="/" className="btn btn-primary mt-2" id="saveButton" onClick={handleAddContact} >Save</Link>
-                    <Link to="/" onClick={(e)=>dispatch({ type:"clearInfo", payload:""})}>get back to contacts</Link>
+                    <Link to="/" className="btn btn-primary mt-2" id="saveButton" onClick={handleAddContact} >Guardar</Link>
+                    <Link to="/" onClick={(e)=>dispatch({ type:"clearInfo", payload:""})}>Volvemos a la contact List</Link>
                 </div>
             </div>
         </div>
